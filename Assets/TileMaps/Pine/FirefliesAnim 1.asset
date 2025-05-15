@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: FirefliesAnim 1
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 1770653433, guid: ddf76a2a03d2d6a43bb1215fdc02226f, type: 3}
+  - {fileID: 1577088129, guid: ddf76a2a03d2d6a43bb1215fdc02226f, type: 3}
+  - {fileID: 1755123899, guid: ddf76a2a03d2d6a43bb1215fdc02226f, type: 3}
+  - {fileID: 1222810528, guid: ddf76a2a03d2d6a43bb1215fdc02226f, type: 3}
+  - {fileID: 45368911, guid: ddf76a2a03d2d6a43bb1215fdc02226f, type: 3}
+  - {fileID: 303145688, guid: ddf76a2a03d2d6a43bb1215fdc02226f, type: 3}
+  - {fileID: -511297953, guid: ddf76a2a03d2d6a43bb1215fdc02226f, type: 3}
+  - {fileID: 1701823515, guid: ddf76a2a03d2d6a43bb1215fdc02226f, type: 3}
+  - {fileID: 1015304837, guid: ddf76a2a03d2d6a43bb1215fdc02226f, type: 3}
+  - {fileID: -1724849085, guid: ddf76a2a03d2d6a43bb1215fdc02226f, type: 3}
+  - {fileID: 1355857468, guid: ddf76a2a03d2d6a43bb1215fdc02226f, type: 3}
+  - {fileID: 616124277, guid: ddf76a2a03d2d6a43bb1215fdc02226f, type: 3}
+  m_MinSpeed: 6
+  m_MaxSpeed: 6
+  m_AnimationStartTime: 1
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0

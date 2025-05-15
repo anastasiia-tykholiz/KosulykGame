@@ -1,0 +1,6 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# For Unity-asset- no conver. because they are binary
+*.asset   binary
+*.meta    binary

@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Core">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAQAAAAAAAIAAAABgCAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Core\Core.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameStage">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAEAAAAAAAAAAEAAIAAAAAAQACAA=</HashCode>
+      <FileName>Assets\Scripts\GameStage\GameStage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BackgroundScrolling">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAIQCAAEgAAAIAAAAAAAAAAAQAAAAAABAgACAA=</HashCode>
+      <FileName>Assets\Scripts\Background\BackgroundScrolling.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Fox">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAADAAKAAAAgAAAAACAEAQEAAAQAAIBAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Enemies\Fox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nettle">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAADAAAAAAAAAAAAACAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Enemies\Nettle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Door">
+    <Position X="9.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAQAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interaction\Door.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="DoubleJumpAbility">
+    <Position X="9.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAIAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interaction\DoubleJumpAbility.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Granny">
+    <Position X="14.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QoAAAAAAACAAAACAAAgAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interaction\Granny.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealingPlant">
+    <Position X="11" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAIABAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interaction\HealingPlant.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Plant">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Plant.PlantType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Interaction\Plant.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAICAAAAAAAAAAAAAACAE=</HashCode>
+      <FileName>Assets\Scripts\Interaction\Plant.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TaskController">
+    <Position X="14.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAIAAEEAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interaction\TaskController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="WallJumpAbility">
+    <Position X="12.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAIAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interaction\WallJumpAbility.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PlayerData">
+    <Position X="11.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAggAAAIAAAAAAACAAgiAIAAAAAAAEAAACAAAAAEAAQ=</HashCode>
+      <FileName>Assets\Scripts\Player\Data\PlayerData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerInputHandler">
+    <Position X="6" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAQAAAAMABACAAAwAQgkABAAIBAAAAIAAAIAABAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\Input\PlayerInputHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player">
+    <Position X="4.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAKIAAQiAAgAAAAIAgSAAACAAAAGAEAAAAhAEBAEE=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerFiniteStateMachine\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerState">
+    <Position X="9.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAIgAAAAgAAIAECEAAIAAEgEAAIAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerFiniteStateMachine\PlayerState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerStateMachine">
+    <Position X="8" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABQAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerFiniteStateMachine\PlayerStateMachine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerFaintState">
+    <Position X="6.25" Y="12.5" Width="1.5" />
+    <InheritanceLine Type="PlayerState" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="10.5" Y="11.747" />
+        <Point X="10.5" Y="12.372" />
+        <Point X="7.75" Y="12.372" />
+        <Point X="7.75" Y="12.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerFiniteStateMachine\PlayerStates\SubStates\PlayerFaintState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerInAirState">
+    <Position X="8" Y="12.5" Width="1.5" />
+    <InheritanceLine Type="PlayerState" ManuallyRouted="true">
+      <Path>
+        <Point X="10.5" Y="11.747" />
+        <Point X="10.5" Y="12.372" />
+        <Point X="8.75" Y="12.372" />
+        <Point X="8.75" Y="12.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAYABAAKAhEAQIgAQAEQgAIAQAUAgAAIgAACggMIAA=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerFiniteStateMachine\PlayerStates\SubStates\PlayerInAirState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerLedgeClimbState">
+    <Position X="9.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIQAAAAAAAAAQAAQIQJAAAAAAAkAABAYAAAAAEEEIA=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerFiniteStateMachine\PlayerStates\SubStates\PlayerLedgeClimbState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerTakeDamageState">
+    <Position X="11.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerFiniteStateMachine\PlayerStates\SubStates\PlayerTakeDamageState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAbilityState">
+    <Position X="13.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAAAAAAIAAAAEAAQAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerFiniteStateMachine\PlayerStates\SuperStates\PlayerAbilityState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerGroundedState">
+    <Position X="15" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAIAAAAAIACAAEAgAAAAAEAQAAIgAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerFiniteStateMachine\PlayerStates\SuperStates\PlayerGroundedState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerTouchingWallState">
+    <Position X="16.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAIAAEAQIgAYAEAgAAAAAEAAAAIgAAAAEAIAA=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerFiniteStateMachine\PlayerStates\SuperStates\PlayerTouchingWallState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LocationSwitcher">
+    <Position X="11" Y="4.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="LocationSwitcher.LocationToSwitch" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Scene\LocationSwitcher.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAIAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Scene\LocationSwitcher.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SceneTransition">
+    <Position X="19.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAgAAAAACAAAAABAAAAAIACAAIAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Scene\SceneTransition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealthBar">
+    <Position X="21.25" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAECAAAAAAAAIAIAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\UI\HealthBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainMenuButtons">
+    <Position X="21.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAgAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\MainMenuButtons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlantsCounter">
+    <Position X="25.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAQmQAAAAIAAEAAAAQAAAAEAAIAAAAAAAJCFA=</HashCode>
+      <FileName>Assets\Scripts\UI\PlantsCounter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IInteractable">
+    <Position X="11" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interfaces\IInteractable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ILogicUpdate">
+    <Position X="12.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interfaces\ILogicUpdate.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IHealth">
+    <Position X="9.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAEBAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Interfaces\IHealth.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
