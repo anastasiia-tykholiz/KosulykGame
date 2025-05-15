@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "QuestLogToogle",
+                    "type": "Button",
+                    "id": "40388307-043e-4a30-853e-b6204ccfacc5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -119,6 +128,61 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "Arrows",
+                    "id": "a470595e-0734-47b5-b1b2-0152aa5301e4",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "a2587495-0e8e-4146-8c4c-53d66a2aed26",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "1a195222-0473-41d0-b146-7a6d8c72eb34",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "dd987986-15f4-4deb-85ce-02bab8fdb0b3",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "136d2f0a-603d-4caa-b5eb-caf3d9a2c866",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "43b16bb5-72ac-4d61-8eb4-945bdeaea954",
                     "path": "<Keyboard>/space",
@@ -143,7 +207,7 @@
                 {
                     "name": "",
                     "id": "0dbb5f6b-3884-4648-b8b7-a64f91fb4479",
-                    "path": "<Keyboard>/j",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -203,6 +267,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4eabae54-8552-447b-b5de-7dcdd6d5688e",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuestLogToogle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3bb1f01b-439b-4ff2-bc18-db255c0ce32b",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "QuestLogToogle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
