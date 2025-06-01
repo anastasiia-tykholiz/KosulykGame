@@ -1,0 +1,313 @@
+﻿using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System.Collections.Generic;
+using UnityEngine.InputSystem;
+
+public class CraftingUIManager : MonoBehaviour, ICauldronObserver
+{
+    [Header("UI References")]
+    [SerializeField] private TextMeshProUGUI expressionText;
+    [SerializeField] private TextMeshProUGUI resultText;
+    [SerializeField] private Transform ingredientPanel;
+    [SerializeField] private GameObject ingredientButtonPrefab;
+    [SerializeField] private TextMeshProUGUI movesLeftText;
+    [SerializeField] private Image resultImage;
+    [SerializeField] private Sprite happySprite;
+    [SerializeField] private Sprite failSprite;
+    [SerializeField] private GameObject brewButton;
+    [SerializeField] private GameObject restartButton;
+
+    [Header("Logic")]
+    private CraftController controller;
+    [SerializeField] private Granny granny;
+    [SerializeField] private string currentLevel;
+    [SerializeField] private TextMeshProUGUI commentText;
+
+
+    private List<Ingredient> availableIngredients;
+    private int selectedIndex = 0;
+    private List<Button> buttons = new();
+    private int _targetResult;
+    private int maxMoves;
+    private int usedMoves = 0;
+    private bool craftingResolved = false;
+
+    private readonly string[] addComments = new[]
+{
+    "Додаю",
+    "Підкидаю ще",
+    "Ще трохи...",
+    "Спробую додати"
+};
+
+    private readonly string[] subComments = new[]
+    {
+    "Віднімаю",
+    "Забираю",
+    "Приберу трошки",
+    "Хмм… відніму"
+};
+
+    private readonly string[] mulComments = new[]
+    {
+    "Множу на",
+    "Підсилюю на",
+    "Потужність ×",
+    "Посилимо на"
+};
+
+    private readonly string[] divComments = new[]
+    {
+    "Ділю на",
+    "Зменшую у",
+    "Розділю на",
+    "Скорочую на"
+};
+
+    private readonly string[] firstMultiplyComments = new[]
+    {
+    "Хмм… починати з множення — дивна ідея.",
+    "Множити ні на що? Не вийде.",
+    "Немає ще з чим множити."
+};
+
+    private readonly string[] firstDivideComments = new[]
+    {
+    "Я точно впевнений, що хочу ділити з самого початку?..",
+    "Ділити ніщо на щось? Нелогічно.",
+    "Починати з ділення — не найкращий план."
+};
+
+    private void Update()
+    {
+        if (Keyboard.current.leftArrowKey.wasPressedThisFrame) MoveSelection(-1);
+        if (Keyboard.current.rightArrowKey.wasPressedThisFrame) MoveSelection(1);
+        if (Keyboard.current.enterKey.wasPressedThisFrame) UseSelectedIngredient();
+    }
+
+    private void PopulateIngredientUI()
+    {
+        foreach (var ing in availableIngredients)
+        {
+            GameObject obj = Instantiate(ingredientButtonPrefab, ingredientPanel);
+            Image image = obj.GetComponent<Image>();
+            image.sprite = ing.icon;
+
+            TextMeshProUGUI label = obj.GetComponentInChildren<TextMeshProUGUI>();
+            label.text = $"{ing.operation}{ing.value}";
+
+            buttons.Add(obj.GetComponent<Button>());
+        }
+    }
+
+    private void MoveSelection(int direction)
+    {
+        if (buttons.Count == 0) return;
+
+        for (int i = 0; i < buttons.Count; i++)
+            buttons[i].transform.localScale = Vector3.one;
+
+        selectedIndex = (selectedIndex + direction + buttons.Count) % buttons.Count;
+
+        HighlightSelected();
+    }
+
+
+    private void HighlightSelected()
+    {
+        if (buttons.Count == 0 || selectedIndex >= buttons.Count)
+            return;
+
+        buttons[selectedIndex].transform.localScale = Vector3.one * 1.2f;
+    }
+
+    private void UseSelectedIngredient()
+    {
+        if (craftingResolved) return;
+
+        Ingredient chosen = availableIngredients[selectedIndex];
+
+        if (controller.context.cauldron.ingredientsUsed.Count == 0 &&
+            (chosen.operation == "*" || chosen.operation == "/"))
+        {
+            commentText.text = chosen.operation switch
+            {
+                "*" => GetRandomComment(firstMultiplyComments),
+                "/" => GetRandomComment(firstDivideComments),
+                _ => ""
+            };
+            return;
+        }
+
+        controller.AddIngredient(chosen);
+        usedMoves++;
+        UpdateMovesLeftText();
+
+        string comment = chosen.operation switch
+        {
+            "+" => GetRandomComment(addComments) + $" {chosen.value}",
+            "-" => GetRandomComment(subComments) + $" {chosen.value}",
+            "*" => GetRandomComment(mulComments) + $" {chosen.value}",
+            "/" => GetRandomComment(divComments) + $" {chosen.value}",
+            _ => ""
+        };
+        commentText.text = comment;
+
+        if (controller.CheckResult())
+        {
+            resultImage.sprite = happySprite;
+            resultImage.gameObject.SetActive(true);
+            brewButton.SetActive(true);
+            craftingResolved = true;
+        }
+        else if (usedMoves >= maxMoves)
+        {
+            resultImage.sprite = failSprite;
+            resultImage.gameObject.SetActive(true);
+            restartButton.SetActive(true);
+            craftingResolved = true;
+        }
+    }
+
+    private string GetRandomComment(string[] comments)
+    {
+        if (comments == null || comments.Length == 0) return "";
+        int index = Random.Range(0, comments.Length);
+        return comments[index];
+    }
+
+    public void OnCauldronUpdated(string expression, int result)
+    {
+        string formatted = BuildExpression(controller.context.cauldron.ingredientsUsed);
+        expressionText.text = formatted;
+        resultText.text = "= " + _targetResult;
+    }
+
+
+    private TaskController _taskController;
+    private string _location;
+
+    public void InitForLevel(string location, TaskController taskController, Granny granny)
+    {
+        _location = location;
+        _taskController = taskController;
+        this.granny = granny;
+        usedMoves = 0;
+        craftingResolved = false;
+
+        brewButton.SetActive(false);
+        restartButton.SetActive(false);
+        resultImage.gameObject.SetActive(false);
+
+        availableIngredients = IngredientLibrary.Instance.GetIngredientsForLevel(location);
+
+        Cauldron cauldron = new Cauldron();
+        controller = new CraftController(cauldron);
+
+        cauldron.AddObserver(this);
+
+        Recipe recipe = GenerateRecipeForLocation(location);
+        _targetResult = recipe.targetResult;
+        maxMoves = recipe.maxActions;
+        controller.StartRecipe(recipe);
+        UpdateMovesLeftText();
+
+        for (int i = ingredientPanel.childCount - 1; i >= 0; i--)
+        {
+            DestroyImmediate(ingredientPanel.GetChild(i).gameObject);
+        }
+        buttons.Clear();
+
+        PopulateIngredientUI();
+        HighlightSelected();
+    }
+
+    private void UpdateMovesLeftText()
+    {
+        int left = maxMoves - usedMoves;
+        movesLeftText.text = $"Ходів лишилось: {left}";
+    }
+
+    private Recipe GenerateRecipeForLocation(string location)
+    {
+        return location switch
+        {
+            "forest" => new Recipe(17, 3),
+            "pineForest" => new Recipe(24, 3),
+            "swamp" => new Recipe(7, 2),
+            _ => new Recipe(0, 0)
+        };
+    }
+
+    private string BuildExpression(List<Ingredient> ingredients)
+    {
+        if (ingredients.Count == 0) return "";
+
+        string expression = "";
+        bool needsParens = false;
+
+        for (int i = 0; i < ingredients.Count; i++)
+        {
+            var ing = ingredients[i];
+            string part;
+
+            if (i == 0)
+            {
+                part = ing.operation switch
+                {
+                    "+" => ing.value.ToString(),
+                    "-" => "-" + ing.value.ToString(),
+                    _ => ing.value.ToString() 
+                };
+            }
+            else
+            {
+                string op = ing.operation;
+                int val = ing.value;
+
+                
+                if ((op == "*" || op == "/") && !needsParens)
+                {
+                    expression = $"({expression})";
+                    needsParens = true;
+                }
+
+                
+                if ((op == "*" || op == "/") && val < 0)
+                    part = $"{op}({val})";
+                else
+                    part = $"{op}{val}";
+            }
+
+            expression += part;
+        }
+
+        return expression;
+    }
+
+    public void OnClickBrew()
+    {
+        if (!craftingResolved) return;
+
+        Potion potion = PotionFactory.CreatePotion(_location);
+        potion?.ApplyEffect(granny);
+
+        _taskController.CompleteTask(_location);
+        gameObject.SetActive(false);
+    }
+
+    public void OnClickRestart()
+    {
+        controller.StartRecipe(GenerateRecipeForLocation(_location));
+        usedMoves = 0;
+        craftingResolved = false;
+
+        resultImage.gameObject.SetActive(false);
+        brewButton.SetActive(false);
+        restartButton.SetActive(false);
+
+        commentText.text = "Спробуємо ще раз...";
+        UpdateMovesLeftText();
+    }
+}
