@@ -1,5 +1,8 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+# Save cs files with UTF-8 encoding
+*.cs text working-tree-encoding=UTF-8
+
 
 # For Unity-asset- no conver. because they are binary
 *.asset   binary

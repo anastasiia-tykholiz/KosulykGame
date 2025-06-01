@@ -15,6 +15,13 @@ public class Stats : CoreComponent, IHealth
     [SerializeField] private float _decreaseHealthCoolDown = 1;
     [SerializeField] private float _startCoolDownTime;
 
+    [SerializeField] private int level = 0;
+    [SerializeField] private int exp;
+    [SerializeField] private int expPerLevel = 100;
+
+    public int Level => level;
+    public int EXP => exp;
+
     [SerializeField] private bool _canDecreaseHealth = true;
 
     private bool _isTakeDamage;
@@ -28,6 +35,9 @@ public class Stats : CoreComponent, IHealth
 
         _currentHealth = _maxHealth;
         _startCoolDownTime = _decreaseHealthCoolDown;
+        level = PlayerPrefs.GetInt("level", level);
+        exp = PlayerPrefs.GetInt("xp", exp);
+        GameEventsManager.playerEvents.PlayerLevelChange(level);
     }
     private void Update()
     {
@@ -90,5 +100,19 @@ public class Stats : CoreComponent, IHealth
     public void RestartLvl()
     {
         SceneTransition.SwitchToScene("Hub");
+    }
+
+    public void AddEXP(int amount)
+    {
+        exp += amount;
+        while (exp >= expPerLevel)
+        {
+            exp -= expPerLevel;
+            level++;
+            GameEventsManager.playerEvents.PlayerLevelChange(level);
+        }
+        PlayerPrefs.SetInt("level", level);
+        PlayerPrefs.SetInt("exp", exp);
+        PlayerPrefs.Save();
     }
 }
