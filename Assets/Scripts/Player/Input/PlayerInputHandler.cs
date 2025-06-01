@@ -1,7 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 
 public class PlayerInputHandler : MonoBehaviour
 {
@@ -18,19 +19,28 @@ public class PlayerInputHandler : MonoBehaviour
     private float _jumpInputStartTime;
     private bool _canEscape = true;
 
+
+    private InputEvents InputEvents => GameEventsManager.inputEvents;
+
+
     private void Update()
     {
         CheckJumpInputHoldTime();
     }
-
+    
+    /*==================== Move ====================*/
     public void OnMoveInput(InputAction.CallbackContext context)
     {
         RawMovementInput = context.ReadValue<Vector2>();
 
         NormalizedInputX = (int)(RawMovementInput * Vector2.right).normalized.x;
         NormalizedInputY = (int)(RawMovementInput * Vector2.up).normalized.y;
+
+        if (context.performed || context.canceled && InputEvents != null)
+            InputEvents.MovePressed(RawMovementInput);
     }
 
+    /*==================== Jump ====================*/
     public void OnJumpInput(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -45,17 +55,22 @@ public class PlayerInputHandler : MonoBehaviour
             JumpInputStop = true;
         }
     }
+
+    /*=============== Interact (E) =================*/
     public void OnInteractInput(InputAction.CallbackContext context)
     {
         if (context.started)
         {
             InteractInput = true;
+            InputEvents.SubmitPressed();
         }
         if (context.canceled)
         {
             InteractInput = false;
         }
     }
+
+    /*=================== Escape ===================*/
     public void OnEscapeInput(InputAction.CallbackContext context)
     {
         if (context.started && _canEscape == true)
@@ -69,6 +84,8 @@ public class PlayerInputHandler : MonoBehaviour
             EscapeInput = false;
         }
     }
+
+    /*=============== Methods for FSM ==============*/
     public void UseJumpInput() 
     { 
         JumpInput = false;

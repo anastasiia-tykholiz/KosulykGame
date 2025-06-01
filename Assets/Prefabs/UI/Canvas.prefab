@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 205601703584021355}
   - component: {fileID: 205601703584021353}
   - component: {fileID: 205601703584021354}
-  - component: {fileID: 205601703584021352}
+  - component: {fileID: 26427959225138184}
   m_Layer: 5
   m_Name: PlantsCounter
   m_TagString: Untagged
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &205601703584021352
+--- !u!114 &26427959225138184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -416,10 +416,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 205601703584021356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7effd9799b7a14d43a14519b8613b7ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b8e911b9d804114cbd3ca31a79ce6ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _taskCounter: {fileID: 3679708711821705280}
+  questId: 
+  stepIdx: 0
+  counterText: {fileID: 205601703584021354}
+  icon: {fileID: 987031611681166202}
+  iconSet: {fileID: 11400000, guid: 941ebe760308ef64c80bcb9bd6613fe6, type: 2}
 --- !u!1 &3679708711821705280
 GameObject:
   m_ObjectHideFlags: 0

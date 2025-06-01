@@ -18,12 +18,19 @@ public class LocationSwitcher : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (_canInteract == true)
+        bool travelUnlocked = PlayerPrefs.GetString("canSceneTravel", "false") == "true";
+
+
+        if (_canInteract && travelUnlocked)
         {
             _canInteract = false;
             SceneTransition.SwitchToScene(_locationToSwitch.ToString());
         }
-        
+        else if (!travelUnlocked)
+        {
+            Debug.Log("я хот≥в спершу з≥брати бабус≥ €блука!");
+        }
+
     }
     
 }

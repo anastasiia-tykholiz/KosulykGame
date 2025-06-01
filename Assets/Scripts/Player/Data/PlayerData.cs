@@ -6,7 +6,8 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     [Header("Move State")]
-    public float movementVelocity = 4.5f;
+    //public float movementVelocity = 4.5f;
+    public float movementVelocity = 7f;
 
     [Header("Jump State")]
     public float jumpVelocity = 11.5f;

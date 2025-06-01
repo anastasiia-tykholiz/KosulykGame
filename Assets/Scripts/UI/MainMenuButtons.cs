@@ -12,6 +12,10 @@ public class MainMenuButtons : MonoBehaviour
         if (_isSceneLoading == false)
         {
             PlayerPrefs.DeleteAll();
+            PlayerPrefs.Save();
+            var oldManager = FindObjectOfType<QuestManager>();
+            if (oldManager) Destroy(oldManager.gameObject);
+
             SceneTransition.SwitchToScene("Hub");
             _isSceneLoading = true;
         }
