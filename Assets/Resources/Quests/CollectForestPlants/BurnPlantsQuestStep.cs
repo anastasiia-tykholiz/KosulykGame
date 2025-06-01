@@ -1,4 +1,4 @@
-using UnityEngine;
+п»їusing UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class BurnPlantsQuestStep : QuestStep, IInteractable
@@ -11,6 +11,10 @@ public class BurnPlantsQuestStep : QuestStep, IInteractable
     [Header("Campfire Animation")]
     [SerializeField] private Animator campfireAnimator;
     [SerializeField] private string burnTrigger = "Burn";
+
+    [Header("Crafting")]
+    private CraftingUIManager craftingUIManager;
+    [SerializeField] private string craftingLocation = "forest";
 
     private bool _playerInside;
     private bool _done;
@@ -26,7 +30,7 @@ public class BurnPlantsQuestStep : QuestStep, IInteractable
 
     private void OnEnable()
     {
-        // підписуємось на натиск «Submit» (E)
+        // РїС–РґРїРёСЃСѓС”РјРѕСЃСЊ РЅР° РЅР°С‚РёСЃРє В«SubmitВ» (E)
         _inputEvents.onSubmitPressed += OnSubmit;
     }
 
@@ -46,24 +50,44 @@ public class BurnPlantsQuestStep : QuestStep, IInteractable
 
     private void OnSubmit(InputEventContext ctx)
     {
-        // лише в потрібному контексті й коли гравець поруч
+        // Р»РёС€Рµ РІ РїРѕС‚СЂС–Р±РЅРѕРјСѓ РєРѕРЅС‚РµРєСЃС‚С– Р№ РєРѕР»Рё РіСЂР°РІРµС†СЊ РїРѕСЂСѓС‡
         if (!_done && ctx == requiredContext && _playerInside)
             Interact();
     }
 
     public void Interact()
     {
+        if (_done) return;
+
         _done = true;
 
-        // анімація (поки чомусь не робоча)
         if (campfireAnimator)
         {
             campfireAnimator.SetTrigger(burnTrigger);
-            Debug.Log("Triger is suppoued to be set");
+            Debug.Log("Triger is supposed to be set");
         }
 
-        Debug.Log("Крок з казаном виконано");
-        FinishQuestStep();
+
+        craftingUIManager = FindObjectOfType<CraftingUIManager>(true);
+
+        if (craftingUIManager != null)
+        {
+            var grannyObj = FindObjectOfType<Granny>();
+            if (grannyObj != null)
+            {
+
+                craftingUIManager.gameObject.SetActive(true);
+                craftingUIManager.InitForLevel(craftingLocation, this, grannyObj);
+            }
+            else
+            {
+                Debug.LogWarning("Granny РЅРµ Р·РЅР°Р№РґРµРЅРѕ РЅР° СЃС†РµРЅС–.");
+            }
+        }
+        else
+        {
+            Debug.LogError("CraftingUIManager РЅРµ Р·РЅР°Р№РґРµРЅРѕ РЅР° СЃС†РµРЅС–.");
+        }
     }
 
     protected override void SetQuestStepState(string state)
@@ -71,4 +95,11 @@ public class BurnPlantsQuestStep : QuestStep, IInteractable
         if (state == "done")
             _done = true;
     }
+
+    public void CompleteCraftingStep()
+    {
+
+        FinishQuestStep();
+    }
+
 }

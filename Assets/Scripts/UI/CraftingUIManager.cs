@@ -17,6 +17,7 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
     [SerializeField] private Sprite failSprite;
     [SerializeField] private GameObject brewButton;
     [SerializeField] private GameObject restartButton;
+    [SerializeField] private GameObject craftingPanelRoot;
 
     [Header("Logic")]
     private CraftController controller;
@@ -32,6 +33,7 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
     private int maxMoves;
     private int usedMoves = 0;
     private bool craftingResolved = false;
+    private BurnPlantsQuestStep _questStep;
 
     private readonly string[] addComments = new[]
 {
@@ -81,10 +83,22 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
 
     private void Update()
     {
+        if (craftingResolved)
+        {
+            if (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.eKey.wasPressedThisFrame)
+            {
+                if (brewButton.activeSelf) OnClickBrew();
+                else if (restartButton.activeSelf) OnClickRestart();
+            }
+
+            return;
+        }
+
         if (Keyboard.current.leftArrowKey.wasPressedThisFrame) MoveSelection(-1);
         if (Keyboard.current.rightArrowKey.wasPressedThisFrame) MoveSelection(1);
         if (Keyboard.current.enterKey.wasPressedThisFrame) UseSelectedIngredient();
     }
+
 
     private void PopulateIngredientUI()
     {
@@ -184,14 +198,12 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
         resultText.text = "= " + _targetResult;
     }
 
-
-    private TaskController _taskController;
     private string _location;
 
-    public void InitForLevel(string location, TaskController taskController, Granny granny)
+    public void InitForLevel(string location, BurnPlantsQuestStep questStep, Granny granny)
     {
         _location = location;
-        _taskController = taskController;
+        _questStep = questStep;
         this.granny = granny;
         usedMoves = 0;
         craftingResolved = false;
@@ -199,6 +211,11 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
         brewButton.SetActive(false);
         restartButton.SetActive(false);
         resultImage.gameObject.SetActive(false);
+
+        if (craftingPanelRoot != null)
+        {
+            craftingPanelRoot.SetActive(true);
+        }
 
         availableIngredients = IngredientLibrary.Instance.GetIngredientsForLevel(location);
 
@@ -293,8 +310,9 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
         Potion potion = PotionFactory.CreatePotion(_location);
         potion?.ApplyEffect(granny);
 
-        _taskController.CompleteTask(_location);
-        gameObject.SetActive(false);
+        _questStep.CompleteCraftingStep();
+        if (craftingPanelRoot != null)
+            craftingPanelRoot.SetActive(false);
     }
 
     public void OnClickRestart()
