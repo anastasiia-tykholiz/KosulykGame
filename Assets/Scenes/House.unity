@@ -657,8 +657,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ee11745fb2fd1479dc420be840c867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wallJumpAbility: {fileID: 6438012837723233133, guid: 6a70cc206324d86418c848581b1f49e5, type: 3}
-  _doubleJumpAbility: {fileID: 8196839606171734865, guid: 114aa6ce0225cbd4195c9d1fbbc29fc3, type: 3}
   _potion1: {fileID: 1406964069}
   _potion2: {fileID: 223249236}
   _potion3: {fileID: 106048319}
@@ -1020,9 +1018,9 @@ MonoBehaviour:
   brewButton: {fileID: 1806603474}
   restartButton: {fileID: 1179422470}
   craftingPanelRoot: {fileID: 1339083130}
+  commentText: {fileID: 642173449}
   granny: {fileID: 245401596}
   currentLevel: 
-  commentText: {fileID: 642173449}
 --- !u!1 &729276400
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,9 +3158,9 @@ MonoBehaviour:
   brewButton: {fileID: 1806603474}
   restartButton: {fileID: 1179422470}
   craftingPanelRoot: {fileID: 0}
+  commentText: {fileID: 642173449}
   granny: {fileID: 245401596}
   currentLevel: forest
-  commentText: {fileID: 642173449}
 --- !u!1 &1406964069
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
 
 public class CraftingUIManager : MonoBehaviour, ICauldronObserver
 {
@@ -18,86 +17,71 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
     [SerializeField] private GameObject brewButton;
     [SerializeField] private GameObject restartButton;
     [SerializeField] private GameObject craftingPanelRoot;
+    [SerializeField] private TextMeshProUGUI commentText;
 
     [Header("Logic")]
     private CraftController controller;
     [SerializeField] private Granny granny;
     [SerializeField] private string currentLevel;
-    [SerializeField] private TextMeshProUGUI commentText;
 
+    private BurnPlantsQuestStep _questStep;
+    private InputEvents _inputEvents => GameEventsManager.inputEvents;
 
     private List<Ingredient> availableIngredients;
-    private int selectedIndex = 0;
     private List<Button> buttons = new();
+    private int selectedIndex = 0;
     private int _targetResult;
     private int maxMoves;
     private int usedMoves = 0;
     private bool craftingResolved = false;
-    private BurnPlantsQuestStep _questStep;
+    private bool justOpened = false;
+    private string _location;
 
-    private readonly string[] addComments = new[]
-{
-    "Додаю",
-    "Підкидаю ще",
-    "Ще трохи...",
-    "Спробую додати"
-};
+    private readonly string[] addComments = { "Додаю", "Підкидаю ще", "Ще трохи...", "Спробую додати" };
+    private readonly string[] subComments = { "Віднімаю", "Забираю", "Приберу трошки", "Хмм… відніму" };
+    private readonly string[] mulComments = { "Множу на", "Підсилюю на", "Потужність ×", "Посилимо на" };
+    private readonly string[] divComments = { "Ділю на", "Зменшую у", "Розділю на", "Скорочую на" };
+    private readonly string[] firstMultiplyComments = { "Хмм… починати з множення — дивна ідея.", "Множити ні на що? Не вийде.", "Немає ще з чим множити." };
+    private readonly string[] firstDivideComments = { "Я точно впевнений, що хочу ділити з самого початку?..", "Ділити ніщо на щось? Нелогічно.", "Починати з ділення — не найкращий план." };
 
-    private readonly string[] subComments = new[]
+    private void OnEnable()
     {
-    "Віднімаю",
-    "Забираю",
-    "Приберу трошки",
-    "Хмм… відніму"
-};
+        _inputEvents.onSubmitPressed += OnSubmitPressed;
+        _inputEvents.onMovePressed += OnMovePressed;
+    }
 
-    private readonly string[] mulComments = new[]
+    private void OnDisable()
     {
-    "Множу на",
-    "Підсилюю на",
-    "Потужність ×",
-    "Посилимо на"
-};
+        _inputEvents.onSubmitPressed -= OnSubmitPressed;
+        _inputEvents.onMovePressed -= OnMovePressed;
+    }
 
-    private readonly string[] divComments = new[]
+    private void OnMovePressed(Vector2 direction)
     {
-    "Ділю на",
-    "Зменшую у",
-    "Розділю на",
-    "Скорочую на"
-};
+        if (craftingResolved) return;
+        if (direction.x < 0) MoveSelection(-1);
+        else if (direction.x > 0) MoveSelection(1);
+    }
 
-    private readonly string[] firstMultiplyComments = new[]
+    private void OnSubmitPressed(InputEventContext ctx)
     {
-    "Хмм… починати з множення — дивна ідея.",
-    "Множити ні на що? Не вийде.",
-    "Немає ще з чим множити."
-};
-
-    private readonly string[] firstDivideComments = new[]
-    {
-    "Я точно впевнений, що хочу ділити з самого початку?..",
-    "Ділити ніщо на щось? Нелогічно.",
-    "Починати з ділення — не найкращий план."
-};
-
-    private void Update()
-    {
-        if (craftingResolved)
+        if (justOpened)
         {
-            if (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.eKey.wasPressedThisFrame)
-            {
-                if (brewButton.activeSelf) OnClickBrew();
-                else if (restartButton.activeSelf) OnClickRestart();
-            }
-
+            justOpened = false;
             return;
         }
 
-        if (Keyboard.current.leftArrowKey.wasPressedThisFrame) MoveSelection(-1);
-        if (Keyboard.current.rightArrowKey.wasPressedThisFrame) MoveSelection(1);
-        if (Keyboard.current.enterKey.wasPressedThisFrame) UseSelectedIngredient();
+        if (craftingResolved)
+        {
+            if (brewButton.activeSelf) OnClickBrew();
+            else if (restartButton.activeSelf) OnClickRestart();
+        }
+        else
+        {
+            UseSelectedIngredient();
+        }
     }
+
 
 
     private void PopulateIngredientUI()
@@ -123,16 +107,12 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
             buttons[i].transform.localScale = Vector3.one;
 
         selectedIndex = (selectedIndex + direction + buttons.Count) % buttons.Count;
-
         HighlightSelected();
     }
 
-
     private void HighlightSelected()
     {
-        if (buttons.Count == 0 || selectedIndex >= buttons.Count)
-            return;
-
+        if (buttons.Count == 0 || selectedIndex >= buttons.Count) return;
         buttons[selectedIndex].transform.localScale = Vector3.one * 1.2f;
     }
 
@@ -158,7 +138,7 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
         usedMoves++;
         UpdateMovesLeftText();
 
-        string comment = chosen.operation switch
+        commentText.text = chosen.operation switch
         {
             "+" => GetRandomComment(addComments) + $" {chosen.value}",
             "-" => GetRandomComment(subComments) + $" {chosen.value}",
@@ -166,7 +146,6 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
             "/" => GetRandomComment(divComments) + $" {chosen.value}",
             _ => ""
         };
-        commentText.text = comment;
 
         if (controller.CheckResult())
         {
@@ -198,8 +177,6 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
         resultText.text = "= " + _targetResult;
     }
 
-    private string _location;
-
     public void InitForLevel(string location, BurnPlantsQuestStep questStep, Granny granny)
     {
         _location = location;
@@ -213,15 +190,12 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
         resultImage.gameObject.SetActive(false);
 
         if (craftingPanelRoot != null)
-        {
             craftingPanelRoot.SetActive(true);
-        }
+        justOpened = true;
 
         availableIngredients = IngredientLibrary.Instance.GetIngredientsForLevel(location);
-
         Cauldron cauldron = new Cauldron();
         controller = new CraftController(cauldron);
-
         cauldron.AddObserver(this);
 
         Recipe recipe = GenerateRecipeForLocation(location);
@@ -231,9 +205,7 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
         UpdateMovesLeftText();
 
         for (int i = ingredientPanel.childCount - 1; i >= 0; i--)
-        {
             DestroyImmediate(ingredientPanel.GetChild(i).gameObject);
-        }
         buttons.Clear();
 
         PopulateIngredientUI();
@@ -275,26 +247,20 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
                 {
                     "+" => ing.value.ToString(),
                     "-" => "-" + ing.value.ToString(),
-                    _ => ing.value.ToString() 
+                    _ => ing.value.ToString()
                 };
             }
             else
             {
-                string op = ing.operation;
-                int val = ing.value;
-
-                
-                if ((op == "*" || op == "/") && !needsParens)
+                if ((ing.operation == "*" || ing.operation == "/") && !needsParens)
                 {
                     expression = $"({expression})";
                     needsParens = true;
                 }
 
-                
-                if ((op == "*" || op == "/") && val < 0)
-                    part = $"{op}({val})";
-                else
-                    part = $"{op}{val}";
+                part = (ing.operation == "*" || ing.operation == "/") && ing.value < 0
+                    ? $"{ing.operation}({ing.value})"
+                    : $"{ing.operation}{ing.value}";
             }
 
             expression += part;
