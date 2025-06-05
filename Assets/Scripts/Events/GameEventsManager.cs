@@ -10,6 +10,8 @@ public class GameEventsManager : MonoBehaviour
     public static readonly QuestEvents questEvents = new QuestEvents();
     public static readonly PlayerEvents playerEvents = new PlayerEvents();
 
+    public static readonly DialogueEvents dialogueEvents = new DialogueEvents();
+
     private void Awake()
     {
         if (instance != null)

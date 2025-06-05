@@ -12,4 +12,16 @@ public class PlayerEvents : MonoBehaviour
         onPlayerLevelChange?.Invoke(newLevel);
     }
 
+    public event Action onDisableMovement;
+    public event Action onEnableMovement;
+
+    public void DisablePlayerMovement()
+    {
+        onDisableMovement?.Invoke();
+    }
+    public void EnablePlayerMovement()
+    {
+        onEnableMovement?.Invoke();
+    }
+
 }

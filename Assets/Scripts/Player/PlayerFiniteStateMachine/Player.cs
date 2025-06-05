@@ -32,7 +32,10 @@ public class Player : MonoBehaviour
     public PlayerInputHandler InputHandler { get; private set; }
 
     [SerializeField] private PlayerData _playerData;
-    
+
+
+
+    private bool _canMove = true;
 
     #endregion
 
@@ -56,6 +59,21 @@ public class Player : MonoBehaviour
         TakeDamageState = new PlayerTakeDamageState(this, StateMachine, _playerData, "takeDamage");
         FaintState = new PlayerFaintState(this, StateMachine, _playerData, "faint");
     }
+
+
+    private void OnEnable()
+    {
+        GameEventsManager.playerEvents.onDisableMovement += DisableMovement;
+        GameEventsManager.playerEvents.onEnableMovement += EnableMovement;
+    }
+
+    private void OnDisable()
+    {
+        GameEventsManager.playerEvents.onDisableMovement -= DisableMovement;
+        GameEventsManager.playerEvents.onEnableMovement -= EnableMovement;
+    }
+
+
     private void Start()
     {
         Anim = GetComponent<Animator>();
@@ -89,4 +107,16 @@ public class Player : MonoBehaviour
     {
         StateMachine.CurrentState.AnimationFinishTrigger();
     }  
+
+    private void DisableMovement()
+    {
+        _canMove = false;
+    }
+
+    private void EnableMovement()
+    {
+        _canMove = true;
+    }
+
+    public bool CanMove() => _canMove;
 }
