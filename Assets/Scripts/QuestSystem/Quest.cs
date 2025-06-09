@@ -53,13 +53,19 @@ public class Quest
 
     public void InstantiateCurrentQuestStep(Transform parentTransform)
     {
-        GameObject questStepPrefab = GetCurrentQuestStepPrefab();
+        GameObject questStepPrefab = GetCurrentQuestStepPrefab();   // вибираємо префаб актуального кроку
         if (questStepPrefab != null)
         {
-            QuestStep questStep = Object.Instantiate<GameObject>(questStepPrefab, parentTransform).GetComponent<QuestStep>();
-            questStep.InitializeQuestStep(info.id, currentQuestStepIndex, questStepStates[currentQuestStepIndex].state);
+            QuestStep questStep = Object
+                .Instantiate<GameObject>(questStepPrefab, parentTransform) // створюємо об’єкт у сцені
+                .GetComponent<QuestStep>();
+            questStep.InitializeQuestStep(
+                info.id,                         // ідентифікатор квесту
+                currentQuestStepIndex,           // порядковий номер кроку
+                questStepStates[currentQuestStepIndex].state); // відновлюємо збережений стан
         }
     }
+
 
 
 
@@ -86,8 +92,10 @@ public class Quest
         }
         else
         {
-            Debug.LogWarning("Tried to access quest step data, but stepIndex was out of range: "
-                + "Quest Id = " + info.id + ", Step Index = " + stepIndex);
+            Debug.LogWarning(
+            "Invalid quest step index: QuestId=" + info.id +
+            ", StepIndex=" + stepIndex
+        );
         }
     }
 

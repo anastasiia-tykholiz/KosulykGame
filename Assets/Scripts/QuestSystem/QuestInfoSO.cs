@@ -29,9 +29,6 @@ public class QuestInfoSO : ScriptableObject
     public int expReward = 100;
     public List<AbilityID> abilitiesToUnlock;
 
-
-    // id will be the name of so asset
-
     private void OnValidate()
     {
         #if UNITY_EDITOR
@@ -40,3 +37,6 @@ public class QuestInfoSO : ScriptableObject
         #endif
     }
 }
+
+
+

@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Quest">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAQAAAAAAAAAABCAAgAAAABBAEQAQAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\QuestSystem\Quest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestData">
+    <Position X="13.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\QuestSystem\QuestData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestIcon">
+    <Position X="13.5" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAABBAAAAAAAAACAAAAAAAAgAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\QuestSystem\QuestIcon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestInfoSO">
+    <Position X="0.5" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAACAAAAAEBCAAAAAAAAAAAgAgAAAAAAgA=</HashCode>
+      <FileName>Assets\Scripts\QuestSystem\QuestInfoSO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestManager">
+    <Position X="3" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAABYAACBAAQYCACAAAAQUAAgACAUIQAAQBAAACMA=</HashCode>
+      <FileName>Assets\Scripts\QuestSystem\QuestManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestPoint">
+    <Position X="11.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAAACACAEAAAAAAAAgBAACAAAEQBAAAIAAAAAAACCEE=</HashCode>
+      <FileName>Assets\Scripts\QuestSystem\QuestPoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestStep">
+    <Position X="5.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAABAABAAABAAAAAAAIAAAAAAAAAAQCAAA=</HashCode>
+      <FileName>Assets\Scripts\QuestSystem\QuestStep.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestStepState">
+    <Position X="13.5" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\QuestSystem\QuestStepState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BurnPlantsQuestStep">
+    <Position X="7.5" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAADABAJAAQAAAAEBACAAIEACEAAIAAAAAAAACEA=</HashCode>
+      <FileName>Assets\Resources\Quests\CollectForestPlants\BurnPlantsQuestStep.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TalkToGrannyQuestStep">
+    <Position X="9.5" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAKAAAIAAQAAAAEBAAAAIEAAACAIAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Resources\Quests\CollectForestPlants\TalkToGrannyQuestStep.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CollectPlantQuestStep">
+    <Position X="5.5" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAgAAAABIAAAgCAAAAgIAAAACAAACAA=</HashCode>
+      <FileName>Assets\Resources\Quests\CollectPlantQuest\CollectPlantQuestStep.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DialogueManager">
+    <Position X="3.5" Y="7.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAgAIBAAAICAAEAAgAQQAAQBEAAIABJGAAAgCEA=</HashCode>
+      <FileName>Assets\Scripts\Dialogue\DialogueManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InkDialogueVariables">
+    <Position X="0.75" Y="7.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgEAAAAAAAAAAAAAAIAAAAAAAAEAAEAAA=</HashCode>
+      <FileName>Assets\Scripts\Dialogue\InkDialogueVariables.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InkExternalFunctions">
+    <Position X="5.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAABAAAAAAAAAAAQAAAgAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Dialogue\InkExternalFunctions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestEvents">
+    <Position X="11.25" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AUAAAAoAAABAAAAAAAAAAIQAAAwAAgAAIAAAAAQAAAA=</HashCode>
+      <FileName>Assets\Scripts\Events\QuestEvents.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DialogueEvents">
+    <Position X="0.75" Y="10.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIgQAAAAQAAAQAgAgAQAAIAAEAAAAACAAAAAAAQ=</HashCode>
+      <FileName>Assets\Scripts\Events\DialogueEvents.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="AbilityID">
+    <Position X="11.5" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAIAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\QuestSystem\QuestInfoSO.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="QuestState">
+    <Position X="9.5" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AQQAAAAAAQAAAAAAAAAAAAAEAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\QuestSystem\QuestState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

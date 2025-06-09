@@ -15,14 +15,14 @@ public class QuestManager : MonoBehaviour
     // quest start requirements
     private int currentPlayerLevel;
     private Stats playerStats;
-    public static QuestManager Instance { get; private set; }
 
+    public static QuestManager Instance { get; private set; }
 
     private void Awake()
     {
         if (Instance != null) { Destroy(gameObject); return; }
         Instance = this;
-        DontDestroyOnLoad(gameObject);      // існування об'єкту між сценами
+        DontDestroyOnLoad(gameObject);      // забезпечує існування між сценами
 
         questMap = CreateQuestMap();
 
@@ -41,7 +41,6 @@ public class QuestManager : MonoBehaviour
         GameEventsManager.questEvents.onFinishQuest += FinishQuest;
 
         GameEventsManager.questEvents.onQuestStepStateChange += QuestStepStateChange;
-
         GameEventsManager.playerEvents.onPlayerLevelChange += PlayerLevelChange;
     }
 
@@ -56,7 +55,6 @@ public class QuestManager : MonoBehaviour
         GameEventsManager.questEvents.onFinishQuest -= FinishQuest;
 
         GameEventsManager.questEvents.onQuestStepStateChange -= QuestStepStateChange;
-
         GameEventsManager.playerEvents.onPlayerLevelChange -= PlayerLevelChange;
 
         foreach (var q in questMap.Values) SaveQuest(q);
@@ -105,9 +103,9 @@ public class QuestManager : MonoBehaviour
         Quest quest = GetQuestById(id);
         quest.state = state;
 
-        // зберігаємо стан у Prefs
         PlayerPrefs.SetInt($"quest_{id}_state", (int)state);
-        PlayerPrefs.Save();
+        PlayerPrefs.Save(); // зберігаємо стан у PlayerPrefs
+
         SaveQuest(quest);
         GameEventsManager.questEvents.QuestStateChange(quest);
     }
