@@ -7,15 +7,12 @@ public class CollectPlantQuestStep : QuestStep
 {
     [SerializeField] private Plant.PlantType plantType;
     [SerializeField] private int amountToCollect;
-    
     private int current;
-
     public Plant.PlantType PlantType => plantType;
     public int AmountToCollect => amountToCollect;
 
     private void OnEnable()
     {
-        Debug.Log("Крок із збиранням рослин");
         GameEventsManager.questEvents.onPlantCollected += OnPlantCollected;
     }
     private void OnDisable()
@@ -25,20 +22,10 @@ public class CollectPlantQuestStep : QuestStep
 
     private void OnPlantCollected(string id, int total)
     {
-        
         if (id != plantType.ToString()) return;
-
         current += 1;
-       
         UpdateStep();
-
-        Debug.Log("Залишилося ще зібрати " + (amountToCollect - total) + " рослин");
-        
-        if (current >= amountToCollect)
-        {
-            Debug.Log("Крок із збиранням рослин завершено");
-            FinishQuestStep();         
-        }
+        if (current >= amountToCollect){ FinishQuestStep(); }
     }
 
     private void UpdateStep()

@@ -26,11 +26,6 @@ public class LocationSwitcher : MonoBehaviour, IInteractable
             _canInteract = false;
             SceneTransition.SwitchToScene(_locationToSwitch.ToString());
         }
-        else if (!travelUnlocked)
-        {
-            Debug.Log("я хот≥в спершу з≥брати бабус≥ €блука!");
-        }
-
     }
     
 }

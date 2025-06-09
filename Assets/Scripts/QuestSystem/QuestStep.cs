@@ -26,11 +26,14 @@ public abstract class QuestStep : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
     protected void ChangeState(string newState)
     {
-        GameEventsManager.questEvents.QuestStepStateChange(questId, stepIndex, new QuestStepState(newState));
-    }
+        GameEventsManager.questEvents.QuestStepStateChange(
+            questId,              // глобальний ідентифікатор квесту
+            stepIndex,            // порядковий номер кроку
+            new QuestStepState(newState)); // серіалізований стан кроку
+    } 
 
-    protected abstract void SetQuestStepState(string state);
+
+protected abstract void SetQuestStepState(string state);
 }
