@@ -368,6 +368,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7a8d0caa-0912-452b-b495-3e16c0cedba9
     m_ActionName: Gameplay/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 176073748285759623}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnEscapeInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 50ed93d1-a2a3-4bb3-81fa-4208a0f535a7
+    m_ActionName: Gameplay/Escape
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 176073748285759623}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnSubmitInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d92c381a-bb6b-4bc8-95bf-bf7c7d5ee139
+    m_ActionName: Gameplay/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 176073748285759623}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnInteractInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7a8d0caa-0912-452b-b495-3e16c0cedba9
+    m_ActionName: Gameplay/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Gameplay
@@ -637,6 +685,9 @@ MonoBehaviour:
   _maxHealth: 100
   _decreaseHealthCoolDown: 1
   _startCoolDownTime: 0
+  level: 1
+  exp: 0
+  expPerLevel: 100
   _canDecreaseHealth: 1
 --- !u!61 &42037605
 BoxCollider2D:

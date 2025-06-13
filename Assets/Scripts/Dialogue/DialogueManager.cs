@@ -13,11 +13,11 @@ public class DialogueManager : MonoBehaviour
     private Story story;
     private int currentChoiceIndex = -1;
 
+    private bool _submitLocked = false;
     private bool dialoguePlaying = false;
     private bool justOpened = false;
-    private bool _submitLocked = false;
 
-     private InkExternalFunctions inkExternalFunctions;
+    private InkExternalFunctions inkExternalFunctions;
      private InkDialogueVariables inkDialogueVariables;
 
     private void Awake()

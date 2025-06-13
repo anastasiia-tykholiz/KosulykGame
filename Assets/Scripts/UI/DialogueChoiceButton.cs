@@ -36,7 +36,7 @@ public class DialogueChoiceButton : MonoBehaviour, ISelectHandler, IPointerClick
     private void Choose()
     {
         GameEventsManager.dialogueEvents.UpdateChoiceIndex(choiceIndex);
-        GameEventsManager.inputEvents.SubmitPressed();   // клік мишею
+        //GameEventsManager.inputEvents.SubmitPressed();   // має бути
 
        
     }
