@@ -458,8 +458,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000075698, y: -79}
-  m_SizeDelta: {x: 332.28, y: 23.17}
+  m_AnchoredPosition: {x: -0.0000075698, y: -76.21}
+  m_SizeDelta: {x: 332.28, y: 28.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2355954884668904910
 CanvasRenderer:
@@ -489,16 +489,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041D\u043E\u0432\u0438\u0439 \u0442\u0435\u043A\u0441\u0442 \u041D\u043E\u0432\u0438\u0439
-    \u0442\u0435\u043A\u0441\u0442 \u041D\u043E\u0432\u0438\u0439 \u0442\u0435\u043A\u0441\u0442
-    \u041D\u043E\u0432\u0438\u0439 \u0442\u0435\u043A\u0441\u0442 \u041D\u043E\u0432\u0438\u0439
-    \u0442\u0435\u043A\u0441\u0442 \u041D\u043E\u0432\u0438\u0439 \u0442\u0435\u043A\u0441\u0442
-    \u041D\u043E\u0432\u0438\u0439 \u0442\u0435\u043A\u0441\u0442 \u041D\u043E\u0432\u0438\u0439
-    \u0442\u0435\u043A\u0441\u0442 \u041D\u043E\u0432\u0438\u0439 \u0442\u0435\u043A\u0441\u0442
-    \u041D\u043E\u0432\u0438\u0439 \u0442\u0435\u043A\u0441\u0442 \u041D\u043E\u0432\u0438\u0439
-    \u0442\u0435\u043A\u0441\u0442 \u041D\u043E\u0432\u0438\u0439 \u0442\u0435\u043A\u0441\u0442
-    \u041D\u043E\u0432\u0438\u0439 \u0442\u0435\u043A\u0441\u0442 \u041D\u043E\u0432\u0438\u0439
-    \u0442\u0435\u043A\u0441\u0442 \u041D\u043E\u0432\u0438\u0439 \u0442\u0435\u043A\u0441\u0442 "
+  m_text: "\u041D\u043E\u0432\u0438\u0439 \u0442\u0435\u043A\u0441\u0442"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c5246032297acb54bbeb3142fe134fb4, type: 2}
   m_sharedMaterial: {fileID: 2130352340960946075, guid: c5246032297acb54bbeb3142fe134fb4, type: 2}
@@ -525,7 +516,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
+  m_fontSize: 14
   m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
@@ -583,7 +574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8185955967094365960
 RectTransform:
   m_ObjectHideFlags: 0
@@ -619,7 +610,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contentParent: {fileID: 8355205826566135587}
   dialogueText: {fileID: 2274731955283560834}
-  choiceButtons: []
+  choiceButtons:
+  - {fileID: 7610849027098854249}
+  - {fileID: 753819301170717434}
 --- !u!1 &3679708711821705280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1103,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8366385997843497328, guid: b38fa01516f9bbb44880a9b0eed75f5d, type: 3}
   m_PrefabInstance: {fileID: 3672521159697375442}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7610849027098854249 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6586585187948487611, guid: b38fa01516f9bbb44880a9b0eed75f5d, type: 3}
+  m_PrefabInstance: {fileID: 3672521159697375442}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78edea41362295943adb9d645b12be9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5845209412764549441
 PrefabInstance:
   m_ObjectHideFlags: 0

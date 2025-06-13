@@ -305,7 +305,7 @@
                     "name": "",
                     "id": "3200a554-f11f-4a42-9c65-cee4b20d7cbb",
                     "path": "<Keyboard>/f",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Submit",

@@ -114,12 +114,13 @@ public class PlayerInputHandler : MonoBehaviour
     /*===============  Submit (Enter/F) =================*/
     public void OnSubmitInput(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
+        if (!context.started) return;
         SubmitInput = true;
         // якщо зараз щось вибране у EventSystem – діалог/меню
-        if (EventSystem.current.currentSelectedGameObject != null)
-            return;                     // UI сам розбереться
-
+        GameObject sel = EventSystem.current.currentSelectedGameObject;
+        // ігноруємо Submit, якщо вибрано щось чуже діалогові (меню, поле вводу тощо)
+        if (sel != null && sel.GetComponent<DialogueChoiceButton>() == null)
+            return;
         InputEvents?.SubmitPressed();
     }
 
