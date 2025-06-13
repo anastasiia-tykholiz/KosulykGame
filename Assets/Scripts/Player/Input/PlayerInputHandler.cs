@@ -55,26 +55,6 @@ public class PlayerInputHandler : MonoBehaviour
         RawMovementInput = input;
         NormalizedInputX = (int)(input * Vector2.right).normalized.x;
         NormalizedInputY = (int)(input * Vector2.up).normalized.y;
-
-
-        //// блокуємо фізичний рух завжди, якщо Player заблокований
-        //if (_player != null && !_player.CanMove())
-        //{
-        //    RawMovementInput = Vector2.zero;
-        //    NormalizedInputX = 0;
-        //    NormalizedInputY = 0;
-        //    // але ДЛЯ ДІАЛОГУ все-одно надсилаємо MovePressed
-        //    if (!inDialogue) return;
-
-        //}
-
-        //RawMovementInput = context.ReadValue<Vector2>();
-
-        //NormalizedInputX = (int)(RawMovementInput * Vector2.right).normalized.x;
-        //NormalizedInputY = (int)(RawMovementInput * Vector2.up).normalized.y;
-
-        //if ((context.performed || context.canceled) && InputEvents != null)
-        //    InputEvents.MovePressed(RawMovementInput);
     }
 
     /*==================== Jump ====================*/

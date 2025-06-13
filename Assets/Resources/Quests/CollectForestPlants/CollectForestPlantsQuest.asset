@@ -21,6 +21,5 @@ MonoBehaviour:
   questStepPrefabs:
   - {fileID: 3403637071915661653, guid: af7361ff7102cd440872fa8a8ec4e23f, type: 3}
   - {fileID: 3403637071915661653, guid: 22ae60b23ac599146a744c935fdb7375, type: 3}
-  - {fileID: 981248179460320264, guid: e931fbdd8e174824eb106a278c1b1255, type: 3}
   expReward: 100
   abilitiesToUnlock: 00000000
