@@ -7,7 +7,7 @@ public class TalkToGrannyQuestStep : QuestStep, IInteractable
     [SerializeField] private Transform grannyTransform;   // де стоїть бабуся
 
     private bool _playerNearby;
-    private bool _done;
+    //private bool _done;
 
     private InputEvents _inputEvents => GameEventsManager.inputEvents;
 
@@ -39,7 +39,7 @@ public class TalkToGrannyQuestStep : QuestStep, IInteractable
 
     public void Interact()
     {
-        _done = true;
+        //_done = true;
         Debug.Log("Поговорили з бабусею");
         FinishQuestStep();
     }
@@ -47,7 +47,7 @@ public class TalkToGrannyQuestStep : QuestStep, IInteractable
     protected override void SetQuestStepState(string state)
     {
         // якщо вантажимо збереження, відмічаємо, що вже зроблено
-        if (state == "done")
-            _done = true;
+        //if (state == "done")
+        //    _done = true;
     }
 }

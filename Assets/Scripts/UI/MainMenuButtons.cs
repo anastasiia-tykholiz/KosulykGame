@@ -13,6 +13,7 @@ public class MainMenuButtons : MonoBehaviour
         {
             PlayerPrefs.DeleteAll();
             PlayerPrefs.Save();
+            QuestManager.SkipSaveOnDisable = true;
             var oldManager = FindObjectOfType<QuestManager>();
             if (oldManager) Destroy(oldManager.gameObject);
 

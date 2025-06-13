@@ -8,6 +8,8 @@ public class QuestManager : MonoBehaviour
     [Header("Config")]
     [SerializeField] private bool loadQuestState = true;
 
+    public static bool SkipSaveOnDisable = false;
+
     private Dictionary<string, Quest> questMap;
     public IEnumerable<Quest> AllQuests => questMap.Values;
 
@@ -22,6 +24,7 @@ public class QuestManager : MonoBehaviour
     {
         if (Instance != null) { Destroy(gameObject); return; }
         Instance = this;
+        SkipSaveOnDisable = false;
         DontDestroyOnLoad(gameObject);      // забезпечує існування між сценами
 
         questMap = CreateQuestMap();
@@ -57,7 +60,10 @@ public class QuestManager : MonoBehaviour
         GameEventsManager.questEvents.onQuestStepStateChange -= QuestStepStateChange;
         GameEventsManager.playerEvents.onPlayerLevelChange -= PlayerLevelChange;
 
-        foreach (var q in questMap.Values) SaveQuest(q);
+        if (!SkipSaveOnDisable) { 
+            foreach (var q in questMap.Values) SaveQuest(q);
+        }
+        Instance = null;
     }
     private void Start()
     {
@@ -175,8 +181,8 @@ public class QuestManager : MonoBehaviour
 
     private void ClaimRewards(Quest quest)
     {
-        Debug.Log($"---- ClaimRewards ---- quest={quest} info={quest?.info} abilitiesList={quest?.info?.abilitiesToUnlock}");
-        Debug.Log($"playerStats = {playerStats}");
+        //Debug.Log($"---- ClaimRewards ---- quest={quest} info={quest?.info} abilitiesList={quest?.info?.abilitiesToUnlock}");
+        //Debug.Log($"playerStats = {playerStats}");
 
 
         QuestInfoSO info = quest.info;
@@ -184,13 +190,13 @@ public class QuestManager : MonoBehaviour
         /*  EXP  */
         if (playerStats != null && quest.info.expReward > 0)
         {
-            Debug.Log("Поточне EXP " + playerStats.EXP);
+            //Debug.Log("Поточне EXP " + playerStats.EXP);
             playerStats.AddEXP(quest.info.expReward);
-            Debug.Log("Нове EXP " + playerStats.EXP);
+            //Debug.Log("Нове EXP " + playerStats.EXP);
         }
         else
         {
-            Debug.LogWarning("playerStats == null, EXP не нараховано");
+            //Debug.LogWarning("playerStats == null, EXP не нараховано");
         }
 
         /*  Abilities  */
@@ -200,7 +206,7 @@ public class QuestManager : MonoBehaviour
             foreach (var ab in list)
             {
                 UnlockAbility(ab);
-                Debug.Log("Нове Абіліті " + ab);
+                //Debug.Log("Нове Абіліті " + ab);
             }
         }
         PlayerPrefs.Save();

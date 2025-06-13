@@ -83,7 +83,7 @@ public class DialogueManager : MonoBehaviour
 
         dialoguePlaying = true;
         justOpened = true;
-        Debug.Log("Enter the dialogue with " + knotName);
+        //Debug.Log("Enter the dialogue with " + knotName);
         
 
         // inform other parts of our system that we've started dialogue
@@ -125,7 +125,7 @@ public class DialogueManager : MonoBehaviour
         if (story.canContinue)
         {
             string dialogueLine = story.Continue();
-            Debug.Log(dialogueLine);
+            //Debug.Log(dialogueLine);
 
             // handle the case where there's an empty line of dialogue
             // by continuing until we get a line with content
@@ -137,7 +137,7 @@ public class DialogueManager : MonoBehaviour
             // (empty choice, external function, etc...)
             if (IsLineBlank(dialogueLine) && !story.canContinue)
             {
-                Debug.Log($"1canContinue={story.canContinue}  choices={story.currentChoices.Count}");
+                //Debug.Log($"1canContinue={story.canContinue}  choices={story.currentChoices.Count}");
 
                 ExitDialogue();
             }
@@ -148,7 +148,7 @@ public class DialogueManager : MonoBehaviour
         }
         else if (story.currentChoices.Count == 0)
         {
-            Debug.Log($"2canContinue={story.canContinue}  choices={story.currentChoices.Count}");
+            //Debug.Log($"2canContinue={story.canContinue}  choices={story.currentChoices.Count}");
 
             ExitDialogue();
         }
@@ -156,7 +156,7 @@ public class DialogueManager : MonoBehaviour
 
     private void ExitDialogue()
     {
-        Debug.Log("Exit the dialogue");
+        //Debug.Log("Exit the dialogue");
         dialoguePlaying = false;
 
         // inform other parts of our system that we've finished dialogue

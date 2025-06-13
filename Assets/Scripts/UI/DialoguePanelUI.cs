@@ -55,6 +55,7 @@ public class DialoguePanelUI : MonoBehaviour
             Debug.LogError("More dialogue choices ("
                 + dialogueChoices.Count + ") came through than are supported ("
                 + choiceButtons.Length + ").");
+            Debug.LogError(dialogueChoices);
         }
 
         // start with all of the choice buttons hidden
