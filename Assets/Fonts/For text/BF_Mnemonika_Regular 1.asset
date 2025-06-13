@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: BF_Mnemonika_Regular 1
   m_EditorClassIdentifier: 
-  hashCode: -617070217
+  hashCode: -1974567066
   material: {fileID: 52806833112443804}
-  materialHashCode: -688226953
+  materialHashCode: -664277754
   m_Version: 1.1.0
   m_SourceFontFileGUID: 54e58f2c778c94447b6521aab3a7b34c
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 54e58f2c778c94447b6521aab3a7b34c, type: 3}
@@ -6545,5 +6545,5 @@ Material:
     - _VertexOffsetY: 0
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
-    - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FaceColor: {r: 0.2627451, g: 0.19215687, b: 0.21176471, a: 1}
   m_BuildTextureStacks: []

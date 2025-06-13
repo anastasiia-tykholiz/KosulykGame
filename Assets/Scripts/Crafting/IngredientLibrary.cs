@@ -12,27 +12,41 @@ public class IngredientLibrary
         // заглушка
         Sprite bottleSprite = Resources.Load<Sprite>("Sprites/BottlePlaceholder");
 
+        Sprite bottleSprite1 = Resources.Load<Sprite>("Sprites/bt1");
+        Sprite bottleSprite2 = Resources.Load<Sprite>("Sprites/bt2");
+        Sprite bottleSprite3 = Resources.Load<Sprite>("Sprites/bt3");
+        Sprite bottleSprite4 = Resources.Load<Sprite>("Sprites/bt4");
+
+        Sprite bottleSprite5 = Resources.Load<Sprite>("Sprites/bt1");
+        Sprite bottleSprite6 = Resources.Load<Sprite>("Sprites/bt2");
+        Sprite bottleSprite7 = Resources.Load<Sprite>("Sprites/bt3");
+
+        Sprite bottleSprite8 = Resources.Load<Sprite>("Sprites/bt1");
+        Sprite bottleSprite9 = Resources.Load<Sprite>("Sprites/bt2");
+        Sprite bottleSprite10 = Resources.Load<Sprite>("Sprites/bt3");
+
+
         levelIngredients["forest"] = new List<Ingredient>
         {
-            new Ingredient(3, "+", bottleSprite),
-            new Ingredient(5, "*", bottleSprite),
-            new Ingredient(2, "+", bottleSprite),
-            new Ingredient(1, "-", bottleSprite)
+            new Ingredient(3, "+", bottleSprite1),
+            new Ingredient(5, "*", bottleSprite2),
+            new Ingredient(2, "+", bottleSprite3),
+            new Ingredient(1, "-", bottleSprite4)
         };
 
         levelIngredients["pineForest"] = new List<Ingredient>
         {
-            new Ingredient(4, "*", bottleSprite),
-            new Ingredient(6, "+", bottleSprite),
-            new Ingredient(1, "+", bottleSprite),
-            new Ingredient(2, "-", bottleSprite)
+            new Ingredient(4, "*", bottleSprite5),
+            new Ingredient(6, "+", bottleSprite6),
+            new Ingredient(1, "+", bottleSprite7),
+            new Ingredient(2, "-", bottleSprite4)
         };
 
         levelIngredients["swamp"] = new List<Ingredient>
         {
-            new Ingredient(3, "+", bottleSprite),
-            new Ingredient(7, "-", bottleSprite),
-            new Ingredient(2, "*", bottleSprite)
+            new Ingredient(3, "+", bottleSprite8),
+            new Ingredient(7, "-", bottleSprite9),
+            new Ingredient(2, "*", bottleSprite10)
         };
     }
 
