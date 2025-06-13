@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class DialogueChoiceButton : MonoBehaviour, ISelectHandler, IPointerClickHandler, ISubmitHandler
+public class DialogueChoiceButton : MonoBehaviour, ISelectHandler, ISubmitHandler
 {
     [Header("Components")]
     [SerializeField] private Button button;
@@ -36,12 +36,12 @@ public class DialogueChoiceButton : MonoBehaviour, ISelectHandler, IPointerClick
     private void Choose()
     {
         GameEventsManager.dialogueEvents.UpdateChoiceIndex(choiceIndex);
-        //GameEventsManager.inputEvents.SubmitPressed();   // має бути
+        //GameEventsManager.inputEvents.SubmitPressed();   
 
-       
+
     }
 
-    public void OnPointerClick(PointerEventData e) => Choose(); // клік мишею
+   
     public void OnSubmit(BaseEventData e) => Choose();
 
 }
