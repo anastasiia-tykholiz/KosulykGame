@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d49ae34d4fb650a498fb1545cde9ef55, type: 3}
+  m_Name: CollectSwampPlantsQuest
+  m_EditorClassIdentifier: 
+  <id>k__BackingField: CollectSwampPlantsQuest
+  displayName: "\u0417\u0456\u0431\u0440\u0430\u0442\u0438 \u0431\u043E\u043B\u043E\u0442\u043D\u0456
+    \u0440\u043E\u0441\u043B\u0438\u043D\u0438"
+  levelRequirement: 0
+  questPrerequisites:
+  - {fileID: 11400000, guid: 64febee54e8fa97428f4f574e93d4539, type: 2}
+  questStepPrefabs:
+  - {fileID: 3403637071915661653, guid: f76ffc28949196646b444fba6e58febb, type: 3}
+  - {fileID: 3403637071915661653, guid: 84ae0c7d13fb36243a196d0e9f063613, type: 3}
+  expReward: 100
+  abilitiesToUnlock: 

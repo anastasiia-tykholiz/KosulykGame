@@ -31,6 +31,21 @@ public class QuestPoint : MonoBehaviour
     {
         GameEventsManager.questEvents.onQuestStateChange += QuestStateChange;
         GameEventsManager.inputEvents.onInteractPressed += InteractPressed;
+        Quest quest = QuestManager.Instance.GetQuestById(questId);
+
+        if (QuestManager.Instance != null)
+        {
+            Quest currentQuest = QuestManager.Instance.GetQuestById(questId);
+            if (quest != null)
+            {
+                currentQuestState = currentQuest.state;
+                questIcon.SetState(currentQuestState, startPoint, finishPoint);
+            }
+            else
+            {
+                Debug.LogWarning($"QuestPoint: Quest з id {questId} не знайдено у QuestManager.");
+            }
+        }
     }
 
     private void OnDisable()
@@ -95,4 +110,9 @@ public class QuestPoint : MonoBehaviour
             playerIsNear = false;
         }
     }
+    public string GetQuestId()
+    {
+        return questInfoForPoint.id;
+    }
+
 }
