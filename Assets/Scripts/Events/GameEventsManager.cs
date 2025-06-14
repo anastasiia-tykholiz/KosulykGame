@@ -9,6 +9,7 @@ public class GameEventsManager : MonoBehaviour
     public static readonly InputEvents inputEvents = new InputEvents();
     public static readonly QuestEvents questEvents = new QuestEvents();
     public static readonly PlayerEvents playerEvents = new PlayerEvents();
+    public static readonly DayEvents dayEvents = new DayEvents();
 
     public static readonly DialogueEvents dialogueEvents = new DialogueEvents();
 

@@ -10,6 +10,7 @@ public class InkExternalFunctions
         story.BindExternalFunction("StartQuest", (string questId) => StartQuest(questId));
         story.BindExternalFunction("AdvanceQuest", (string questId) => AdvanceQuest(questId));
         story.BindExternalFunction("FinishQuest", (string questId) => FinishQuest(questId));
+        story.BindExternalFunction("EndDay", () => EndDay());
     }
 
     public void Unbind(Story story)
@@ -17,6 +18,7 @@ public class InkExternalFunctions
         story.UnbindExternalFunction("StartQuest");
         story.UnbindExternalFunction("AdvanceQuest");
         story.UnbindExternalFunction("FinishQuest");
+        story.UnbindExternalFunction("EndDay");
     }
 
     private void StartQuest(string questId)
@@ -32,5 +34,11 @@ public class InkExternalFunctions
     private void FinishQuest(string questId)
     {
         GameEventsManager.questEvents.FinishQuest(questId);
+    }
+
+    private void EndDay()
+    {
+        Debug.Log("EndDay() викликано з INK");
+        GameEventsManager.dayEvents.EndDay();
     }
 }

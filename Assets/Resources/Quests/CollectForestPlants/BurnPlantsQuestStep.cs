@@ -57,6 +57,8 @@ public class BurnPlantsQuestStep : QuestStep, IInteractable
 
     public void Interact()
     {
+        // змінюємо контекст щоб гравець не рухався
+        GameEventsManager.inputEvents.ChangeInputEventContext(InputEventContext.DIALOGUE);
         if (_done) return;
 
         _done = true;
@@ -75,7 +77,7 @@ public class BurnPlantsQuestStep : QuestStep, IInteractable
             var grannyObj = FindObjectOfType<Granny>();
             if (grannyObj != null)
             {
-
+              
                 craftingUIManager.gameObject.SetActive(true);
                 craftingUIManager.InitForLevel(craftingLocation, this, grannyObj);
             }
@@ -98,7 +100,8 @@ public class BurnPlantsQuestStep : QuestStep, IInteractable
 
     public void CompleteCraftingStep()
     {
-
+        // змінюємо контекст щоб гравець міг знову рухатись
+        //GameEventsManager.inputEvents.ChangeInputEventContext(InputEventContext.DEFAULT);
         FinishQuestStep();
     }
 

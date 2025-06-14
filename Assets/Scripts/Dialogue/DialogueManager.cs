@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
@@ -120,25 +120,20 @@ public class DialogueManager : MonoBehaviour
             story.ChooseChoiceIndex(currentChoiceIndex);
             // reset choice index for next time
             currentChoiceIndex = -1;
+            GameEventsManager.inputEvents.ChangeInputEventContext(InputEventContext.DIALOGUE);
+
         }
 
         if (story.canContinue)
         {
             string dialogueLine = story.Continue();
-            //Debug.Log(dialogueLine);
 
-            // handle the case where there's an empty line of dialogue
-            // by continuing until we get a line with content
             while (IsLineBlank(dialogueLine) && story.canContinue)
             {
                 dialogueLine = story.Continue();
             }
-            // handle the case where the last line of dialogue is blank
-            // (empty choice, external function, etc...)
             if (IsLineBlank(dialogueLine) && !story.canContinue)
             {
-                //Debug.Log($"1canContinue={story.canContinue}  choices={story.currentChoices.Count}");
-
                 ExitDialogue();
             }
             else
@@ -184,12 +179,14 @@ public class DialogueManager : MonoBehaviour
 
     private void SubmitPressed(InputEventContext inputEventContext)
     {
+        Debug.Log($"[Submit] Submit pressed: context={inputEventContext}, locked={_submitLocked}, choice={currentChoiceIndex}");
         // if the context isn't dialogue, we never want to register input here
         if (!inputEventContext.Equals(InputEventContext.DIALOGUE) || _submitLocked)
         {
+            Debug.Log("[Submit] Ignored due to context or lock");
             return;
         }
-        // діалоги без вибору (звичайні репліки): блокуємо лиш на 1 кадр
+        // РґС–Р°Р»РѕРіРё Р±РµР· РІРёР±РѕСЂСѓ (Р·РІРёС‡Р°Р№РЅС– СЂРµРїР»С–РєРё): Р±Р»РѕРєСѓС”РјРѕ Р»РёС€ РЅР° 1 РєР°РґСЂ
         bool hasChoices = story.currentChoices.Count > 0;
         _submitLocked = true;
 
@@ -197,8 +194,16 @@ public class DialogueManager : MonoBehaviour
         justOpened = false;
 
 
-        StartCoroutine(UnlockNextFrame());  
+        StartCoroutine(UnlockNextFrame());
 
+        if (!story.canContinue && story.currentChoices.Count == 0)
+        {
+            Debug.Log("[Submit] Dialogue ended вЂ” exiting");
+            ExitDialogue();
+            return;
+        }
+
+        Debug.Log("[Submit] Proceeding to ContinueOrExitStory");
 
         ContinueOrExitStory();
     }
@@ -230,7 +235,7 @@ public class DialogueManager : MonoBehaviour
     }
     private IEnumerator UnlockNextFrame()
     {
-        yield return null;          // рівно 1 кадр
+        yield return null;          // СЂС–РІРЅРѕ 1 РєР°РґСЂ
         _submitLocked = false;
     }
 

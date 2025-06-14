@@ -65,6 +65,7 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
 
     private void OnSubmitPressed(InputEventContext ctx)
     {
+        
         if (craftingResolved)
         {
             if (brewButton.activeSelf) OnClickBrew();
@@ -74,13 +75,12 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
         {
             if (!gameObject.activeInHierarchy || availableIngredients == null || availableIngredients.Count == 0)
                 return;
-
-            if (justOpened)
-            {
-                justOpened = false;
-                return;
-            }
-
+            //if (justOpened)
+            //{
+            //    justOpened = false;
+            //    return;
+            //}
+            GameEventsManager.inputEvents.ChangeInputEventContext(InputEventContext.DIALOGUE);
             UseSelectedIngredient();
         }
     }

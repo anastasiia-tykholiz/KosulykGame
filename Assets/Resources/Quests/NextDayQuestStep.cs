@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class TalkToGrannyQuestStep : QuestStep, IInteractable
+public class NextDayQuestStep : QuestStep, IInteractable
 {
     [Header("Granny settings")]
     [SerializeField] private Transform grannyTransform;   // де стоїть бабуся
@@ -40,7 +40,7 @@ public class TalkToGrannyQuestStep : QuestStep, IInteractable
     public void Interact()
     {
         //_done = true;
-        Debug.Log("Поговорили з бабусею");
+        Debug.Log("Новий день");
         FinishQuestStep();
     }
 
