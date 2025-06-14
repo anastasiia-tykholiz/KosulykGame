@@ -64,7 +64,7 @@
     Бабуся: Побачимо вранці... Дякую, мій відважний помічнику. На добраніч.
     Косулик: Сподіваюсь, зілля допоможе.
     Косулик: На добраніч!
-    ~ EndDay()
+    ~ EndDay(CollectPineForestPlantsQuestId)
     ~ FinishQuest(CollectForestPlantsQuestId)
     -> END
 

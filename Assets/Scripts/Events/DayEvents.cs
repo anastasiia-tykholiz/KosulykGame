@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class DayEvents 
 {
-    public event Action OnDayEnd;
+    public event Action<string> OnDayEnd;
 
-    public void EndDay()
+    public void EndDay(string nextQuestId)
     {
-        OnDayEnd?.Invoke();
+        Debug.Log("Day Events End Day next Quest Id " + nextQuestId);
+        OnDayEnd?.Invoke(nextQuestId);
+
     }
 }

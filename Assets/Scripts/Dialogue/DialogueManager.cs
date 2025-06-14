@@ -179,14 +179,15 @@ public class DialogueManager : MonoBehaviour
 
     private void SubmitPressed(InputEventContext inputEventContext)
     {
-        Debug.Log($"[Submit] Submit pressed: context={inputEventContext}, locked={_submitLocked}, choice={currentChoiceIndex}");
+        //Debug.Log($"[Submit] Submit pressed: context={inputEventContext}, locked={_submitLocked}, choice={currentChoiceIndex}");
         // if the context isn't dialogue, we never want to register input here
         if (!inputEventContext.Equals(InputEventContext.DIALOGUE) || _submitLocked)
         {
-            Debug.Log("[Submit] Ignored due to context or lock");
+            //Debug.Log("[Submit] Ignored due to context or lock");
             return;
         }
-        // діалоги без вибору (звичайні репліки): блокуємо лиш на 1 кадр
+        // ������ ��� ������ (�������� ������): ������� ��� �� 1 ����
+
         bool hasChoices = story.currentChoices.Count > 0;
         _submitLocked = true;
 
@@ -203,7 +204,15 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("[Submit] Proceeding to ContinueOrExitStory");
+        if (!story.canContinue && story.currentChoices.Count == 0)
+        {
+            //Debug.Log("[Submit] Dialogue ended — exiting");
+            ExitDialogue();
+            return;
+        }
+
+        //Debug.Log("[Submit] Proceeding to ContinueOrExitStory");
+
 
         ContinueOrExitStory();
     }
@@ -235,7 +244,8 @@ public class DialogueManager : MonoBehaviour
     }
     private IEnumerator UnlockNextFrame()
     {
-        yield return null;          // рівно 1 кадр
+        yield return null;          // ���� 1 ����
+
         _submitLocked = false;
     }
 

@@ -1,6 +1,6 @@
 
-=== CollectPineForestPlants ===
-{ CollectPineForestPlantsQuestState :
+=== CollectSwampPlants ===
+{ CollectSwampPlantsQuestState :
     - "REQUIREMENTS_NOT_MET" : -> requirementsNotMet
     - "CAN_START" : -> canStart
     - "IN_PROGRESS" : -> inProgress
@@ -31,7 +31,7 @@
 
 = step_ok
     Косулик: Я тоді одразу піду!!
-    ~ StartQuest(CollectPineForestPlantsQuestId)
+    ~ StartQuest(CollectSwampPlantsQuestId)
     -> END
 
 
@@ -48,16 +48,17 @@
 = canFinish
 Косулик: Я зробив все як було написано в книзі!
 * [Віддати зілля] 
-    Бабуся: Ти зварив своє друге зілля! Дякую, Косулику.
+    Бабуся: Ти зварив своє треттє зілля! Дякую, Косулику.
     Косулик: Тобі ж стане легше?
     Бабуся: Побачимо вранці... Дякую, мій відважний помічнику. На добраніч.
     Косулик: Сподіваюсь, зілля допоможе.
     Косулик: На добраніч!
-    ~ EndDay(CollectSwampPlantsQuestId)
-    ~ FinishQuest(CollectPineForestPlantsQuestId)
+    ~ EndDay(FinalDayQuestId)
+    ~ FinishQuest(CollectSwampPlantsQuestId)
     -> END
 
 
 = finished
 -> END
+
 
