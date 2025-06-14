@@ -111,6 +111,7 @@ public class PlayerInputHandler : MonoBehaviour
         {
             EscapeInput = true;
             _canEscape = false;
+            GameEventsManager.inputEvents.ChangeInputEventContext(InputEventContext.DEFAULT);
             SceneTransition.SwitchToScene("MainMenu");
         }
         if (context.canceled)

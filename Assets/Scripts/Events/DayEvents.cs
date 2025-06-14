@@ -11,5 +11,6 @@ public class DayEvents
     {
         Debug.Log("Day Events End Day next Quest Id " + nextQuestId);
         OnDayEnd?.Invoke(nextQuestId);
+
     }
 }

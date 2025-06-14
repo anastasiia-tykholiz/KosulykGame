@@ -8,7 +8,6 @@ public class InputEvents
 
     public void ChangeInputEventContext(InputEventContext newContext)
     {
-        //Debug.Log($"[CTX] InputEventContext changed to: {newContext}");
         this.inputEventContext = newContext;
     }
 

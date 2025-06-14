@@ -1,11 +1,12 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SceneTransition : MonoBehaviour
 {
-    private static SceneTransition instance;
+    public static SceneTransition Instance { get; private set; }
+    
     private static bool shouldPlayOpeningAnimation = false;
 
     private Animator _animator;
@@ -13,16 +14,16 @@ public class SceneTransition : MonoBehaviour
 
     public static void SwitchToScene(string sceneName)
     {
-        instance._animator.SetTrigger("sceneClosing");
+        Instance._animator.SetTrigger("sceneClosing");
 
-        instance.loadingSceneOperation = SceneManager.LoadSceneAsync(sceneName);
+        Instance.loadingSceneOperation = SceneManager.LoadSceneAsync(sceneName);
 
-        instance.loadingSceneOperation.allowSceneActivation = false;
+        Instance.loadingSceneOperation.allowSceneActivation = false;
     }
 
     private void Start()
     {
-        instance = this;
+        Instance = this;
 
         _animator = GetComponent<Animator>();
 
@@ -36,8 +37,21 @@ public class SceneTransition : MonoBehaviour
 
     public void OnAnimationOver()
     {
+        Debug.Log(" Анімація завершена, активуємо сцену");
         shouldPlayOpeningAnimation = true;
-
         loadingSceneOperation.allowSceneActivation = true;
+    }
+
+
+    public IEnumerator FadeOut()
+    {
+        _animator.SetTrigger("sceneClosing");
+        yield return new WaitForSeconds(1f); // або анімаційний час
+    }
+
+    public IEnumerator FadeIn()
+    {
+        _animator.SetTrigger("sceneOpening");
+        yield return new WaitForSeconds(1f);
     }
 }

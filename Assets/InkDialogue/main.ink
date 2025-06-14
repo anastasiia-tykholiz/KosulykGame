@@ -3,6 +3,7 @@ EXTERNAL AdvanceQuest(questid)
 EXTERNAL FinishQuest(questid)
 EXTERNAL EndDay(nextQuestId)
 
+
 // quest ids
 VAR CollectApplesTutorialId = "CollectApplesTutorial"
 VAR CollectForestPlantsQuestId = "CollectForestPlantsQuest"

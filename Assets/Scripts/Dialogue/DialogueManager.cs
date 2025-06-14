@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
@@ -120,25 +120,20 @@ public class DialogueManager : MonoBehaviour
             story.ChooseChoiceIndex(currentChoiceIndex);
             // reset choice index for next time
             currentChoiceIndex = -1;
+            GameEventsManager.inputEvents.ChangeInputEventContext(InputEventContext.DIALOGUE);
+
         }
 
         if (story.canContinue)
         {
             string dialogueLine = story.Continue();
-            //Debug.Log(dialogueLine);
 
-            // handle the case where there's an empty line of dialogue
-            // by continuing until we get a line with content
             while (IsLineBlank(dialogueLine) && story.canContinue)
             {
                 dialogueLine = story.Continue();
             }
-            // handle the case where the last line of dialogue is blank
-            // (empty choice, external function, etc...)
             if (IsLineBlank(dialogueLine) && !story.canContinue)
             {
-                //Debug.Log($"1canContinue={story.canContinue}  choices={story.currentChoices.Count}");
-
                 ExitDialogue();
             }
             else
@@ -192,6 +187,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         // ������ ��� ������ (�������� ������): ������� ��� �� 1 ����
+
         bool hasChoices = story.currentChoices.Count > 0;
         _submitLocked = true;
 
@@ -199,7 +195,14 @@ public class DialogueManager : MonoBehaviour
         justOpened = false;
 
 
-        StartCoroutine(UnlockNextFrame());  
+        StartCoroutine(UnlockNextFrame());
+
+        if (!story.canContinue && story.currentChoices.Count == 0)
+        {
+            Debug.Log("[Submit] Dialogue ended — exiting");
+            ExitDialogue();
+            return;
+        }
 
         if (!story.canContinue && story.currentChoices.Count == 0)
         {
@@ -209,6 +212,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         //Debug.Log("[Submit] Proceeding to ContinueOrExitStory");
+
 
         ContinueOrExitStory();
     }
@@ -241,6 +245,7 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator UnlockNextFrame()
     {
         yield return null;          // ���� 1 ����
+
         _submitLocked = false;
     }
 
