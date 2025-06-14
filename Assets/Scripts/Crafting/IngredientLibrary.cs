@@ -17,13 +17,13 @@ public class IngredientLibrary
         Sprite bottleSprite3 = Resources.Load<Sprite>("Sprites/bt3");
         Sprite bottleSprite4 = Resources.Load<Sprite>("Sprites/bt4");
 
-        Sprite bottleSprite5 = Resources.Load<Sprite>("Sprites/bt1");
-        Sprite bottleSprite6 = Resources.Load<Sprite>("Sprites/bt2");
-        Sprite bottleSprite7 = Resources.Load<Sprite>("Sprites/bt3");
+        Sprite bottleSprite5 = Resources.Load<Sprite>("Sprites/bt5");
+        Sprite bottleSprite6 = Resources.Load<Sprite>("Sprites/bt6");
+        Sprite bottleSprite7 = Resources.Load<Sprite>("Sprites/bt7");
 
-        Sprite bottleSprite8 = Resources.Load<Sprite>("Sprites/bt1");
-        Sprite bottleSprite9 = Resources.Load<Sprite>("Sprites/bt2");
-        Sprite bottleSprite10 = Resources.Load<Sprite>("Sprites/bt3");
+        Sprite bottleSprite8 = Resources.Load<Sprite>("Sprites/bt8");
+        Sprite bottleSprite9 = Resources.Load<Sprite>("Sprites/bt9");
+        Sprite bottleSprite10 = Resources.Load<Sprite>("Sprites/bt10");
 
 
         levelIngredients["forest"] = new List<Ingredient>
