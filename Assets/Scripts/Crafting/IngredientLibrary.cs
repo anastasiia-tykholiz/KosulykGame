@@ -46,7 +46,8 @@ public class IngredientLibrary
         {
             new Ingredient(3, "+", bottleSprite8),
             new Ingredient(7, "-", bottleSprite9),
-            new Ingredient(2, "*", bottleSprite10)
+            new Ingredient(2, "*", bottleSprite10),
+            new Ingredient(3, "-", bottleSprite4)
         };
     }
 

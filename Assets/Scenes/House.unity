@@ -1340,8 +1340,8 @@ MonoBehaviour:
   ingredientButtonPrefab: {fileID: 6634401682645348784, guid: d618243343eacb64e85682f1bc3ffcd0, type: 3}
   movesLeftText: {fileID: 780311592}
   resultImage: {fileID: 729276402}
-  happySprite: {fileID: 21300000, guid: 5cbab495c322ff8409b46de33536081a, type: 3}
-  failSprite: {fileID: 21300000, guid: c35e263963f34b14982eb3fd383a03e8, type: 3}
+  happySprite: {fileID: 21300000, guid: bf0215aa0633aab498dfa986fc3cab33, type: 3}
+  failSprite: {fileID: 21300000, guid: 18791eb6e401ae14cb2435aa3f7d0ab8, type: 3}
   brewButton: {fileID: 1806603474}
   restartButton: {fileID: 1179422470}
   craftingPanelRoot: {fileID: 1339083130}
