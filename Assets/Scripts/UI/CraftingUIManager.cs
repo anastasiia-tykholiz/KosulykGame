@@ -41,8 +41,8 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
     private readonly string[] subComments = { "Віднімаю", "Забираю", "Приберу трошки", "Хмм… відніму" };
     private readonly string[] mulComments = { "Множу на", "Підсилюю на", "Потужність ×", "Посилимо на" };
     private readonly string[] divComments = { "Ділю на", "Зменшую у", "Розділю на", "Скорочую на" };
-    private readonly string[] firstMultiplyComments = { "Хмм… починати з множення — дивна ідея.", "Множити ні на що? Не вийде.", "Немає ще з чим множити." };
-    private readonly string[] firstDivideComments = { "Я точно впевнений, що хочу ділити з самого початку?..", "Ділити ніщо на щось? Нелогічно.", "Починати з ділення — не найкращий план." };
+    private readonly string[] firstMultiplyComments = { "Хмм… починати з множення дивна ідея.", "Множити ні на що? Не вийде.", "Немає ще з чим множити." };
+    private readonly string[] firstDivideComments = { "Я точно хочу ділити з самого початку?..", "Ділити ніщо на щось? Нелогічно.", "Починати з ділення не найкращий план." };
 
     private void OnEnable()
     {
@@ -228,8 +228,8 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
         return location switch
         {
             "forest" => new Recipe(17, 3),
-            "pineForest" => new Recipe(24, 3),
-            "swamp" => new Recipe(7, 2),
+            "pineForest" => new Recipe(22, 4),
+            "swamp" => new Recipe(6, 4),
             _ => new Recipe(0, 0)
         };
     }
@@ -239,7 +239,7 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
         if (ingredients.Count == 0) return "";
 
         string expression = "";
-        bool needsParens = false;
+        string prevOp = "";
 
         for (int i = 0; i < ingredients.Count; i++)
         {
@@ -257,22 +257,29 @@ public class CraftingUIManager : MonoBehaviour, ICauldronObserver
             }
             else
             {
-                if ((ing.operation == "*" || ing.operation == "/") && !needsParens)
+                bool prevWasLow = prevOp == "+" || prevOp == "-";
+                bool currentIsHigh = ing.operation == "*" || ing.operation == "/";
+
+                if (prevWasLow && currentIsHigh && expression.Contains("+") || expression.Contains("-"))
                 {
                     expression = $"({expression})";
-                    needsParens = true;
                 }
 
-                part = (ing.operation == "*" || ing.operation == "/") && ing.value < 0
+                bool needsParens = (ing.operation == "*" || ing.operation == "/") && ing.value < 0;
+
+                part = needsParens
                     ? $"{ing.operation}({ing.value})"
                     : $"{ing.operation}{ing.value}";
             }
 
             expression += part;
+            prevOp = ing.operation;
         }
 
         return expression;
     }
+
+
 
     public void OnClickBrew()
     {

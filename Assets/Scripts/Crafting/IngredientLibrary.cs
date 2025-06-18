@@ -36,19 +36,20 @@ public class IngredientLibrary
 
         levelIngredients["pineForest"] = new List<Ingredient>
         {
-            new Ingredient(4, "*", bottleSprite5),
-            new Ingredient(6, "+", bottleSprite6),
-            new Ingredient(1, "+", bottleSprite7),
-            new Ingredient(2, "-", bottleSprite4)
+             new Ingredient(2, "*", bottleSprite5),
+             new Ingredient(3, "+", bottleSprite6),
+             new Ingredient(4, "*", bottleSprite7),
+             new Ingredient(2, "+", bottleSprite4)
         };
 
         levelIngredients["swamp"] = new List<Ingredient>
         {
-            new Ingredient(3, "+", bottleSprite8),
-            new Ingredient(7, "-", bottleSprite9),
-            new Ingredient(2, "*", bottleSprite10),
-            new Ingredient(3, "-", bottleSprite4)
+            new Ingredient(8, "+", bottleSprite8),
+            new Ingredient(2, "/", bottleSprite9),
+            new Ingredient(4, "-", bottleSprite10),
+            new Ingredient(2, "*", bottleSprite5)
         };
+
     }
 
     public List<Ingredient> GetIngredientsForLevel(string location)
