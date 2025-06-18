@@ -31,10 +31,11 @@ public class QuestPoint : MonoBehaviour
     {
         GameEventsManager.questEvents.onQuestStateChange += QuestStateChange;
         GameEventsManager.inputEvents.onInteractPressed += InteractPressed;
-        Quest quest = QuestManager.Instance.GetQuestById(questId);
+        
 
         if (QuestManager.Instance != null)
         {
+            Quest quest = QuestManager.Instance.GetQuestById(questId);
             Quest currentQuest = QuestManager.Instance.GetQuestById(questId);
             if (quest != null)
             {
