@@ -36,9 +36,9 @@ public class IngredientLibrary
 
         levelIngredients["pineForest"] = new List<Ingredient>
         {
-             new Ingredient(2, "*", bottleSprite5),
+             new Ingredient(4, "*", bottleSprite5),
              new Ingredient(3, "+", bottleSprite6),
-             new Ingredient(4, "*", bottleSprite7),
+             new Ingredient(2, "*", bottleSprite7),
              new Ingredient(2, "+", bottleSprite4)
         };
 
